@@ -1,4 +1,5 @@
-import { Box, Center, createStyles, Text, Image } from '@mantine/core'
+import { Box, Center, createStyles, Text, Image, Stack } from '@mantine/core'
+import Link from 'next/link'
 
 const useStyle = createStyles(theme => ({
   navbar: {
@@ -7,11 +8,15 @@ const useStyle = createStyles(theme => ({
     top: '0',
     width: '20%',
     height: '100%',
-    backgroundColor: 'gray',
+    backgroundColor: 'black',
   },
   profile: {
     borderRadius: '50%',
     border: '2px solid orange',
+    width: '100px',
+    height: '100px',
+    overflow: 'hidden',
+    marginTop: '40px',
   },
 }))
 
@@ -19,8 +24,13 @@ export default function Navbar() {
   const { classes, theme } = useStyle()
 
   return (
-    <Box className={classes.navbar}>
-      <Center className={classes.profile}></Center>
-    </Box>
+    <Stack className={classes.navbar} align="center">
+      <Center className={classes.profile}>
+        <Image src="./assets/images/me.jpg" />
+      </Center>
+      <Link href={'/'} style={{ textDecoration: 'none', color: 'white' }}>
+        Home
+      </Link>
+    </Stack>
   )
 }
