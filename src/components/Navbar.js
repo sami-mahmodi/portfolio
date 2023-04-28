@@ -1,4 +1,5 @@
-import { Box, Center, createStyles, Text, Image, Stack, rem } from '@mantine/core'
+import { Box, Center, createStyles, Text, Image, Stack, rem, Avatar, Group } from '@mantine/core'
+import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin } from '@tabler/icons-react'
 import Link from 'next/link'
 
 const useStyle = createStyles(theme => ({
@@ -6,13 +7,13 @@ const useStyle = createStyles(theme => ({
     position: 'absolute',
     left: '0',
     top: '0',
-    width: '20%',
+    width: rem(240),
     height: '100%',
     backgroundColor: 'black',
   },
   profile: {
     borderRadius: '50%',
-    border: '2px solid orange',
+    border: '2px solid cyan',
     width: '100px',
     height: '100px',
     overflow: 'hidden',
@@ -42,9 +43,8 @@ export default function Navbar() {
 
   return (
     <Stack className={classes.navbar} align="center">
-      <Center className={classes.profile}>
-        <Image src="./assets/images/me.jpg" />
-      </Center>
+      <Avatar src="./assets/images/me.jpg" radius="lg" size="xl" variant="gradient" mt={50} />
+
       <Text
         style={theme.colorScheme === 'dark' ? { color: 'cyan' } : { color: 'black' }}
         className={classes.name}>
@@ -68,6 +68,11 @@ export default function Navbar() {
           Blogs
         </Link>
       </Box>
+      <Group mt={80} py={40}>
+        <IconBrandFacebook />
+        <IconBrandLinkedin />
+        <IconBrandInstagram />
+      </Group>
     </Stack>
   )
 }
